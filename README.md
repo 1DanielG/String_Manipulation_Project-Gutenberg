@@ -10,7 +10,7 @@ Project Gutenberg offers over 56,000 free eBooks. You will find the world's grea
 
 For this mini-project, I have downloaded the **Importance of Being Earnest book** by **Oscar Wilde** for string manipulation and text mining.
 
-Who would you like to play, if you can pick your role? If you are like me you will probably like the character with the fewest lines or perhaps you will go with the character with the most lines. My goal is to read the book in R and using my string processing skills in order to count the number of lines each character get.
+Who would you like to play, if you can pick your role? If you are like me you will probably like the character with the fewest lines or perhaps you will go with the character with the most lines. My goal is to read the book in R and using my string processing skills in order to count the number of lines each character gets.
 
 Original book comes from the **Project Gutenberg** see [Project Gutenberg](http://www.gutenberg.org/ebooks/search/?query=importance+of+being+earnest) for more detail.
 
@@ -36,7 +36,7 @@ head(earnest , n = 10)
 
 There are some for-word and after-word text that Project Gutenberg has added to the book. I want to remove them and then split the book into the introduction (the list of characters, scenes, etc.) and the main body.
 
-I used `stringr::str_detect` to find the lines:
+Use the `stringr::str_detect` to find the lines:
 
 ``` r
 # Find the lines that end the foreword and start of afterword 
@@ -124,7 +124,7 @@ players <- str_extract(lines, pattern_chr)
 Finally, take a look at the unique characters and tally up how many lines each character had, using table() function.
 
 ``` r
-# Let's see what we have
+# See unique characters
 unique(players)
 ```
 
@@ -145,7 +145,7 @@ table(players)
     ##     Miss Prism. 
     ##              41
 
-The output contingency table are of class table. The behavior of these objects is not quite like a data frame. So convert it to a data frame for simple visualization with `ggplot`.
+The output contingency table are of class table. The behavior of these objects is not quite like a data frame. So convert it to a data frame for simple visualization with `ggplot2`.
 
 ``` r
 #
