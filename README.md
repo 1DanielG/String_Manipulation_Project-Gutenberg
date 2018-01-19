@@ -34,6 +34,18 @@ earnest <- stri_read_lines("importance_of_being_earnest.txt")
 head(earnest , n = 10)
 ```
 
+             
+    ## [1] "The Project Gutenberg eBook, The Importance of Being Earnest, by Oscar"
+    ## [2] "Wilde"                                                                 
+    ## [3] ""                                                                      
+    ## [4] ""                                                                      
+    ## [5] "This eBook is for the use of anyone anywhere at no cost and with"      
+    ## [6] "almost no restrictions whatsoever.  You may copy it, give it away or"  
+    ## [7] "re-use it under the terms of the Project Gutenberg License included"   
+    ## [8] "with this eBook or online at www.gutenberg.org"                        
+    ## [9] ""                                                                      
+    ## [10] "" 
+
 There are some for-word and after-word text that Project Gutenberg has added to the book. I want to remove them and then split the book into the introduction (the list of characters, scenes, etc.) and the main body.
 
 Use the `stringr::str_detect` to find the lines:
