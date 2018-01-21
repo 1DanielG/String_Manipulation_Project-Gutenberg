@@ -10,7 +10,7 @@ Project Gutenberg offers over 56,000 free eBooks. You will find the world's grea
 
 For this mini-project, I have downloaded the **Importance of Being Earnest book** by **Oscar Wilde** for string manipulation and text mining.
 
-Who would you like to play, if you can pick your role? If you are like me you will probably like the character with the fewest lines or perhaps you will go with the character with the most lines. My goal is to read the book in R and using my string processing skills in order to count the number of lines each character gets.
+Who would you like to play, if you can pick your role? If you are like me you will probably like the character with the fewest lines or perhaps you will go with the character with the most lines. My goal is to read the book in R and use my string processing skills in order to count the number of lines each character gets.
 
 Original book comes from the **Project Gutenberg** see [Project Gutenberg](http://www.gutenberg.org/ebooks/search/?query=importance+of+being+earnest) for more detail.
 
@@ -48,7 +48,7 @@ head(earnest , n = 10)
 
 There are some for-word and after-word text that Project Gutenberg has added to the book. I want to remove them and then split the book into the introduction (the list of characters, scenes, etc.) and the main body.
 
-Use the `stringr::str_detect` to find the lines:
+Use `stringr::str_detect` to find the lines:
 
 ``` r
 # Find the lines that end the foreword and start of afterword 
@@ -94,7 +94,7 @@ writeLines(book_text[1:20])
     ## accurately--any one can play accurately--but I play with wonderful
     ## expression.  As far as the piano is concerned, sentiment is my forte.  I
 
-It is clear that there are lots of empty lines. They don't really affect the process so I used `stringi::stri_isempty` to find empty strings and remove them. `stri_isempty()`returns a logical that I am going to use to subset the not-empty strings later:
+It is clear that there are lots of empty lines. They don't really affect the process so I used `stringi::stri_isempty` to find empty strings and remove them. `stri_isempty()`returns a logical (TRUE or FALSE) that I am going to use to subset the non-empty strings later:
 
 ``` r
 # Get rid of empty strings
@@ -110,13 +110,13 @@ book_lines[10:15]
     ## [5] "Lane.  Yes, sir."                                                        
     ## [6] "Algernon.  And, speaking of the science of Life, have you got the"
 
-Considering the lines, the first line is for *Algernon*, the next three strings are continuations of that line, then line 5 is for *Lane* and line 6 for *Algernon*. Lines that start with a word followed by a `.` .
+Considering the lines, the first line is for *Algernon*, the next three strings are continuations of that line, then line 5 is for *Lane* and line 6 for *Algernon*. Lines that start with a word followed by a `"."` .
 
-I know the characters names from the book introduction. So, I specifically looking for lines that start with their names. I have created the *characters* vector with all the characters names.
+I know the characters names from the book introduction. So, I specifically looked for lines that start with their names. I have created the *characters* vector with all the characters names.
 
-I created a pattern that matches the start of the string, followed by one of the characters names using `rebus::or1()` followed by a `.`.
+I created a pattern that matches the start of the string, followed by one of the characters names using `rebus::or1()` followed by a `"."`.
 
-Then pull out the *lines* that match with `stringr::str_subset`,followed by `stringr::str_extract` to pull out only the parts that matched:
+Then pull out the *lines* that match with the criteria `stringr::str_subset`,followed by `stringr::str_extract` to pull out only the parts that matched:
 
 ``` r
 # Create vector of characters
@@ -157,7 +157,7 @@ table(players)
     ##     Miss Prism. 
     ##              41
 
-The output contingency table are of class table. The behavior of these objects is not quite like a data frame. So convert it to a data frame for simple visualization with `ggplot2`.
+The output contingency tables are of class table. The behavior of these objects are not quite like a data frame. So convert it to a data frame for simple visualization with `ggplot2`.
 
 ``` r
 #
